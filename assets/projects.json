@@ -1,0 +1,58 @@
+[
+  {
+    "id": "2sfca",
+    "title": "Improved Water Accessibility — 2SFCA",
+    "subtitle": "Identifying households with low access to improved water sources in Sibi, Ghana using the Two-Step Floating Catchment Area method.",
+    "hero_image": "assets/images/2sfca_sibi.jpg",
+    "description": "This analysis models spatial accessibility to improved water point sources (boreholes and public standpipes) in Sibi, Ghana by computing the ratio of available improved water point sources and households within 500m walking catchments.",
+    "Data": [ "Household locations", "Water point sources locations", "Road network" ],
+    "methods": [
+      "Two-Step Floating Catchment Area analysis",
+      "500m catchments generated using OD Matrix — the 500m is Ghana's national standard for improved access",
+      "Catchment ratios"
+    ],
+    "tools": [ "ArcGIS Pro", "Python" ],
+    "Key findings": [
+      "Accessibility varies significantly across neighborhoods",
+      "Households at the peripheries have limited numbers of improved water sources leading to low accessibility scores.",
+      "Clusters of low access align with longer walking distances and lower facility density in these areas.",
+      "Results highlight priority areas for new or upgraded water points."
+    ]
+  },
+  {
+    "id": "flood",
+    "title": "Flood Risk Mapping",
+    "subtitle": "Hydrologic modeling using DEM, soil, and land cover to map susceptibility.",
+    "hero_image": "assets/images/Flood_Risk.jpg",
+    "description": "Flow direction, accumulation, and slope were combined with land cover and soils to produce a flood susceptibility index. Outputs support mitigation planning and infrastructure prioritization.",
+    "methods": [ "Flow direction/accumulation", "SCS Curve Number", "Weighted overlay" ],
+    "tools": [ "ArcGIS Pro" ]
+  },
+  {
+    "id": "ndvi_lst",
+    "title": "NDVI & Land Surface Temperature",
+    "subtitle": "Vegetation–temperature dynamics to understand urban heat.",
+    "hero_image": "assets/images/LST&NDVI.png",
+    "description": "MODIS NDVI and LST time series were analyzed to reveal inverse relationships between greenness and temperature. Hotspots indicate where greening could reduce heat exposure.",
+    "methods": [ "Time series extraction", "Zonal statistics", "Correlation mapping" ],
+    "tools": [ "Google Earth Engine", "R" ]
+  },
+  {
+    "id": "rwh",
+    "title": "Rainwater Harvesting Suitability",
+    "subtitle": "Multi-criteria decision analysis for surface rainwater harvesting.",
+    "hero_image": "assets/images/RainWaterHarvesting.png",
+    "description": "A weighted overlay of slope, roof area, rainfall, and proximity to buildings prioritizes locations for rainwater harvesting to enhance water security.",
+    "methods": [ "Raster reclass", "Weighted overlay", "MCDA" ],
+    "tools": [ "ArcGIS Pro" ]
+  },
+  {
+    "id": "lidar",
+    "title": "LiDAR Canopy Height Model",
+    "subtitle": "Deriving DSM/DTM and CHM for urban greenness assessment.",
+    "hero_image": "assets/images/CanopyHeight_Lidar.jpg",
+    "description": "LiDAR point clouds were processed to produce terrain and surface models. The canopy height model helps quantify vegetation structure and identify low-shade areas.",
+    "methods": [ "Point classification", "Rasterization", "CHM computation" ],
+    "tools": [ "ArcGIS Pro", "ENVI" ]
+  }
+]
