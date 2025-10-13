@@ -70,6 +70,7 @@ async function loadPanels() {
 
 function rotateHeroSlideshow(){
   const slides = document.querySelectorAll('.hero-slideshow .slides img');
+  if(!slides.length) return;
   let index = 0;
   setInterval(() => {
     slides[index].classList.remove('active');
@@ -82,4 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
     smoothNav(); highlightNav(); rotateBanner(); loadPanels();rotateHeroSlideshow();
     document.getElementById('year').textContent = new Date().getFullYear();
 });
+
 
