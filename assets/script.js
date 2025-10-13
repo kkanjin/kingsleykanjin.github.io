@@ -80,8 +80,9 @@ function rotateHeroSlideshow(){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    smoothNav(); highlightNav(); rotateBanner(); loadPanels();rotateHeroSlideshow();
+    smoothNav(); highlightNav(); rotateBanner(); loadPanels(); rotateHeroSlideshow();
     document.getElementById('year').textContent = new Date().getFullYear();
 });
+
 
 
