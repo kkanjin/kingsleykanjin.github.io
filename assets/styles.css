@@ -301,7 +301,7 @@ a {
 .hero-slideshow {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   overflow: hidden;
   border-bottom: 2px solid var(--border);
   z-index: 1; 
@@ -315,7 +315,7 @@ a {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 2.0s ease-in-out;
 }
 
 .hero-slideshow .slides img.active {
@@ -345,5 +345,6 @@ a {
 }
 .hero { margin-top: 0; position: relative; z-index: 2; }
 }
+
 
 
