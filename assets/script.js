@@ -68,7 +68,18 @@ async function loadPanels() {
     document.querySelectorAll('.panel').forEach(p => obs.observe(p));
 }
 
+function rotateHeroSlideshow(){
+  const slides = document.querySelectorAll('.hero-slideshow .slides img');
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 4000); // change every 4 seconds
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    smoothNav(); highlightNav(); rotateBanner(); loadPanels();
+    smoothNav(); highlightNav(); rotateBanner(); loadPanels();rotateHeroSlideshow();
     document.getElementById('year').textContent = new Date().getFullYear();
 });
+
