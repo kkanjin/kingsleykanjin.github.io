@@ -1,7 +1,7 @@
 [
   {
     "id": "2sfca",
-    "title": "Improved Water Accessibility — 2SFCA",
+    "title": "Accessibility to Improved Water Point Sources — 2SFCA",
     "subtitle": "Identifying households with low access to improved water sources in Sibi, Ghana using the Two-Step Floating Catchment Area method.",
     "hero_image": "assets/images/2sfca_sibi.jpg",
     "description": "This analysis models spatial accessibility to improved water point sources (boreholes and public standpipes) in Sibi, Ghana by computing the ratio of available improved water point sources and households within 500m walking catchments.",
@@ -20,13 +20,21 @@
     ]
   },
   {
-    "id": "flood",
-    "title": "Flood Risk Mapping",
-    "subtitle": "Hydrologic modeling using DEM, soil, and land cover to map susceptibility.",
-    "hero_image": "assets/images/Flood_Risk.jpg",
-    "description": "Flow direction, accumulation, and slope were combined with land cover and soils to produce a flood susceptibility index. Outputs support mitigation planning and infrastructure prioritization.",
-    "methods": [ "Flow direction/accumulation", "SCS Curve Number", "Weighted overlay" ],
-    "tools": [ "ArcGIS Pro" ]
+    "id": "2sfca",
+    "title": "Accessibility to Dentist — 2SFCA",
+    "subtitle": "Identifying the level of accessibility to Dentist in Washington DC using the Two-Step Floating Catchment Area method.",
+    "hero_image": "assets/images/AccessibilitytoDentist.jpg",
+    "description": "This analysis models spatial accessibility to dentist locations in Washington DCby computing the ratio of available dentistal hospital to households within 10 miles driving distance.",
+    "Data": [ "Dental Hospital locations", "Census Tract Centriods", "Total Number of population in a tract", "Road network" ],
+    "methods": [
+      "Two-Step Floating Catchment Area analysis to compute the accessibility scores",
+      "10 miles catchments generated using OD Matrix"
+    ],
+    "tools": [ "ArcGIS Pro", "Python" ],
+    "Key findings": [
+      "Spatial accessibility exhibits strong urban concentration, with higher accessibility scores clustered around the city center, reflecting greater dental hospital density and service availability within central catchments.",
+      "Peripheral and southeastern areas demonstrate spatial inequities in dental care access, characterized by lower accessibility scores and sparse facility distribution, underscoring the need for strategic facility siting or expanded service coverage in those regions."
+    ]
   },
   {
     "id": "ndvi_lst",
@@ -47,6 +55,15 @@
     "tools": [ "ArcGIS Pro" ]
   },
   {
+    "id": "flood",
+    "title": "Flood Risk Mapping",
+    "subtitle": "Hydrologic modeling using DEM, soil, and land cover to map susceptibility.",
+    "hero_image": "assets/images/Flood_Risk.jpg",
+    "description": "Flow direction, accumulation, and slope were combined with land cover and soils to produce a flood susceptibility index. Outputs support mitigation planning and infrastructure prioritization.",
+    "methods": [ "Flow direction/accumulation", "SCS Curve Number", "Weighted overlay" ],
+    "tools": [ "ArcGIS Pro" ]
+  },
+  {
     "id": "lidar",
     "title": "LiDAR Canopy Height Model",
     "subtitle": "Deriving DSM/DTM and CHM for urban greenness assessment.",
@@ -56,3 +73,4 @@
     "tools": [ "ArcGIS Pro", "ENVI" ]
   }
 ]
+
