@@ -76,13 +76,14 @@ function rotateHeroSlideshow(){
     slides[index].classList.remove('active');
     index = (index + 1) % slides.length;
     slides[index].classList.add('active');
-  }, 4000); // change every 4 seconds
+  }, 8000); // change every 4 seconds
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     smoothNav(); highlightNav(); rotateBanner(); loadPanels(); rotateHeroSlideshow();
     document.getElementById('year').textContent = new Date().getFullYear();
 });
+
 
 
 
