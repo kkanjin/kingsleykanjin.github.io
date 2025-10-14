@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kingsley Kanjin · Portfolio</title>
-    <meta name="description" content="GIS & Planning portfolio of Kingsley Kanjin." />
+    <meta name="description" content="GIS & Planning portfolio of Kingsley Kanjin." />    
+    <!-- ArcGIS Embeddable Map Script -->
+<script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
     <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -87,9 +89,30 @@
         <!-- PROJECTS -->
         <section class="section" id="projects">
             <h2>Projects</h2>
-            <p class="lead">Each project presents a brief narrative supported by static maps. Interactive web maps will be added later.</p>
+            <p class="lead">Each project presents a brief narrative supported by static maps.</p>
             <div id="story-panels"></div>
         </section>
+
+<!-- Interactive ArcGIS Map -->
+<section class="section" id="maps">
+  <h2>Interactive Map</h2>
+  <div class="map-frame">
+    <arcgis-embedded-map
+      item-id="0d157147aa88452a9bfb7386c2ae702d"
+      style="height:600px; width:100%;"
+      theme="dark"
+      bookmarks-enabled
+      heading-enabled
+      legend-enabled
+      information-enabled
+      share-enabled
+      center="-73.69036517907091,45.559527472680095"
+      scale="577790.5542885"
+      portal-url="https://gisag.maps.arcgis.com">
+    </arcgis-embedded-map>
+  </div>
+</section>
+
 
         <!-- CONTACT -->
         <section class="section" id="contact">
