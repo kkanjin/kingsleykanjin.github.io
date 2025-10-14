@@ -115,6 +115,46 @@ arcgis-embedded-map {
     height: 450px;
   }
 }
+/* ===== Interactive Maps Section ===== */
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.map-frame {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+}
+
+.map-frame iframe,
+arcgis-embedded-map {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 10px;
+}
+
+.map-caption {
+  text-align: center;
+  color: var(--muted);
+  padding: 10px;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .map-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-frame iframe,
+  arcgis-embedded-map {
+    height: 450px;
+  }
+}
+
 
 
 
