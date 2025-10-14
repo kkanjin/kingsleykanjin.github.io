@@ -91,6 +91,31 @@ a{color:var(--accent);text-decoration:none}
 .hero-slideshow .overlay-text p{margin:0;font-size:22px;color:var(--muted)}
 @media(max-width:768px){.hero-slideshow .overlay-text h1{font-size:38px}.hero-slideshow .overlay-text p{font-size:18px}}
 
+/* ===== ArcGIS Embedded Map ===== */
+#maps {
+  text-align: center;
+}
+.map-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+arcgis-embedded-map {
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  arcgis-embedded-map {
+    height: 450px;
+  }
+}
+
 
 
 
