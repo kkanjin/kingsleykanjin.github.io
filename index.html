@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<!-- ── NAVIGATION — dark navy ─────────────────────────────────── -->
+<!-- ── NAVIGATION ─────────────────────────────────────────────── -->
 <header class="header">
     <nav class="nav">
         <div class="brand">Porfolio</div>
@@ -29,7 +29,7 @@
     </nav>
 </header>
 
-<!-- ── HERO — light blue, centered ───────────────────────────── -->
+<!-- ── HERO ───────────────────────────────────────────────────── -->
 <section class="hero-section" id="about">
     <div class="hero-inner">
         <img src="assets/images/portrait.jpg"
@@ -149,8 +149,10 @@
     <!-- ── MAPS ───────────────────────────────────────────────── -->
     <section class="section" id="maps">
         <h2>Interactive Maps &amp; Dashboard</h2>
-        <p class="lead" style="margin-bottom:24px;">Live maps and dashboards built with ArcGIS Online and Python.</p>
-        <div class="map-frame" style="margin-bottom:28px;">
+        <p class="lead" style="margin-bottom:32px;">Live maps and dashboards built with ArcGIS Online and Python.</p>
+
+        <!-- 1 — ArcGIS Online map (original, unchanged) -->
+        <div class="map-frame" style="margin-bottom:48px;">
             <p class="map-caption">ArcGIS Online — Interactive Map</p>
             <arcgis-embedded-map
                 item-id="0d157147aa88452a9bfb7386c2ae702d"
@@ -162,13 +164,71 @@
                 portal-url="https://gisag.maps.arcgis.com">
             </arcgis-embedded-map>
         </div>
-        <div class="map-frame">
-            <p class="map-caption">Scroll-Down to explore the dashboard</p>
-            <iframe src="https://kkanjin.github.io/ohio-wq-dashboard/"
-                    width="200%" height="2000px" frameborder="0"
-                    title="Ohio Water Quality Dashboard" loading="lazy"
-                    style="border-radius:10px;border:none;display:block;"></iframe>
+
+        <!-- 2 — PFAS Prediction Interactive Map (NEW) -->
+        <div class="map-frame" style="margin-bottom:48px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
+                <p class="map-caption" style="margin-bottom:0;">
+                    🧪 Ohio Watershed PFAS Contamination Risk — ML Prediction Map
+                </p>
+                <a href="https://kkanjin.github.io/Ohio-PFAS-Prediction/"
+                   target="_blank"
+                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.85em;
+                          font-weight:600;color:#1a6b9a;text-decoration:none;
+                          border:1.5px solid #1a6b9a;padding:6px 16px;border-radius:6px;
+                          white-space:nowrap;transition:background 0.2s,color 0.2s;"
+                   onmouseover="this.style.background='#1a6b9a';this.style.color='#fff'"
+                   onmouseout="this.style.background='transparent';this.style.color='#1a6b9a'">
+                    Open Full Dashboard ↗
+                </a>
+            </div>
+            <p style="font-size:0.88em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
+                Random Forest model (CV F1 = 0.980 ± 0.002) predicting PFAS contamination risk across
+                1,541 Ohio HUC-12 watersheds. Toggle layers to explore High Risk, Moderate Risk,
+                military sites, and 14 priority unmonitored watersheds.
+            </p>
+            <iframe src="https://kkanjin.github.io/Ohio-PFAS-Prediction-mobile/"
+                    width="100%" height="600px" frameborder="0"
+                    title="Ohio PFAS Contamination Risk Prediction Map" loading="lazy"
+                    style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
+            <p style="font-size:0.78em;color:#4a7fa5;margin-top:10px;text-align:center;">
+                💡 Use the layer controls to toggle risk tiers, military sites, and PFAS facilities.
+                Open the full dashboard for ML feature importance, confusion matrix, and risk charts.
+            </p>
         </div>
+
+        <!-- 3 — Ohio WQ Monitoring Interactive Map (NEW) -->
+        <div class="map-frame">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
+                <p class="map-caption" style="margin-bottom:0;">
+                    🌊 Ohio HUC-8 Water Quality Monitoring Coverage &amp; Gap Assessment
+                </p>
+                <a href="https://kkanjin.github.io/ohio-wq-dashboard/"
+                   target="_blank"
+                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.85em;
+                          font-weight:600;color:#1a6b9a;text-decoration:none;
+                          border:1.5px solid #1a6b9a;padding:6px 16px;border-radius:6px;
+                          white-space:nowrap;transition:background 0.2s,color 0.2s;"
+                   onmouseover="this.style.background='#1a6b9a';this.style.color='#fff'"
+                   onmouseout="this.style.background='transparent';this.style.color='#1a6b9a'">
+                    Open Full Dashboard ↗
+                </a>
+            </div>
+            <p style="font-size:0.88em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
+                Spatial analysis of water quality monitoring coverage across all 44 Ohio HUC-8 watersheds.
+                814 monitoring locations from 8 organizations — hover over watersheds to explore
+                station counts, density, and coverage. Identifies 5 unmonitored watersheds.
+            </p>
+            <iframe src="https://kkanjin.github.io/WastershedOhio/"
+                    width="100%" height="600px" frameborder="0"
+                    title="Ohio Water Quality Monitoring Coverage Map" loading="lazy"
+                    style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
+            <p style="font-size:0.78em;color:#4a7fa5;margin-top:10px;text-align:center;">
+                💡 Hover over watersheds for monitoring stats. Open the full dashboard for
+                coverage charts, gap analysis, and monitoring organization breakdown.
+            </p>
+        </div>
+
     </section>
 
     <!-- ── CONTACT ────────────────────────────────────────────── -->
