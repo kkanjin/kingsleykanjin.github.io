@@ -17,7 +17,7 @@
 <!-- ── NAVIGATION ─────────────────────────────────────────────── -->
 <header class="header">
     <nav class="nav">
-        <div class="brand">Porfolio</div>
+        <div class="brand">Portfolio</div>
         <div>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="exp-body">
-                <p class="exp-summary">GIS Analyst with over six years of experience in GIS and
+                <p class="exp-summary">GIS Analyst with over seven(7) years of experience in GIS and
                 remote sensing, and two years in environmental planning and water quality management.
                 I lead GIS-based analyses supporting the Areawide Water Quality Management (208) Plan,
                 climate resilience assessments, and Permit-to-Install (PTI) compliance reviews.</p>
@@ -68,7 +68,7 @@
                         <span class="h-icon">🗺</span>
                         <div>
                             <strong>Spatial Analysis</strong>
-                            <p>Hydrologic modelling, watershed delineation and spatial data analysis
+                            <p>Hydrologic modelling, watershed delineation, SWAT Modeling, and spatial data analysis
                             to guide infrastructure investment and protect public health.</p>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <span class="h-icon">🤝</span>
                         <div>
                             <strong>Stakeholder Engagement</strong>
-                            <p>Public communication and stakeholder engagement delivering
+                            <p>Community Water Resources Advisory Group coordinating, Public communication and stakeholder engagement delivering
                             data-driven solutions for sustainable communities.</p>
                         </div>
                     </div>
@@ -107,18 +107,18 @@
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-icon">🗺</div>
-                <h4>GIS</h4>
-                <p>ArcGIS Pro, ArcGIS API for Python, WebGIS (ArcGIS Online)</p>
+                <h4>GIS & Hydrological modeling</h4>
+                <p>ArcGIS Pro, ArcGIS API for Python, QGIS, WebGIS (ArcGIS Online), SWAT Modeling, HEC RAS</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">💻</div>
-                <h4>Programming</h4>
-                <p>Python, R, Google Earth Engine</p>
+                <h4>Programming and AI</h4>
+                <p>Python, R, Google Earth Engine, Machine Learning, AI Prompt Writing</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">🌿</div>
                 <h4>Environmental Planning</h4>
-                <p>Permit-to-Install Compliance Analysis, Environmental Impact Assessment</p>
+                <p>Permit-to-Install Compliance Analysis, Policy Review, Environmental Impact Assessment</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">💧</div>
@@ -128,12 +128,12 @@
             <div class="skill-card">
                 <div class="skill-icon">🤝</div>
                 <h4>Engagement</h4>
-                <p>Stakeholder Engagement, Public Speaking, Policy Communication</p>
+                <p>Stakeholder Engagement, Public Speaking and Presentation, Policy Communication</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">📊</div>
                 <h4>Modelling</h4>
-                <p>Spatial Accessibility, Remote Sensing, Hydrologic &amp; Climate Resilience</p>
+                <p>Spatial Accessibility, Remote Sensing, Hydrologic Modeling (Water Quality & Non-Point Source Pollution using SWAT Model, flood modeling, watershed) &amp; Climate Resilience</p>
             </div>
         </div>
     </section>
@@ -149,7 +149,7 @@
     <!-- ── MAPS ───────────────────────────────────────────────── -->
     <section class="section" id="maps">
         <h2>Interactive Maps &amp; Dashboard</h2>
-        <p class="lead" style="margin-bottom:32px;">Live maps and dashboards built with ArcGIS Online and Python.</p>
+        <p class="lead" style="margin-bottom:32px;">Webmaps and dashboards built with ArcGIS Online and Python.</p>
 
         <!-- 1 — ArcGIS Online map (original, unchanged) -->
         <div class="map-frame" style="margin-bottom:48px;">
@@ -169,12 +169,12 @@
         <div class="map-frame" style="margin-bottom:48px;">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
                 <p class="map-caption" style="margin-bottom:0;">
-                    🧪 Ohio Watershed PFAS Contamination Risk — ML Prediction Map
+                    Ohio Watershed PFAS Contamination Risk — ML Prediction Map
                 </p>
                 <a href="https://kkanjin.github.io/Ohio-PFAS-Prediction/"
                    target="_blank"
-                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.85em;
-                          font-weight:600;color:#1a6b9a;text-decoration:none;
+                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:3em;
+                          font-weight:700;color:#1a6b9a;text-decoration:none;
                           border:1.5px solid #1a6b9a;padding:6px 16px;border-radius:6px;
                           white-space:nowrap;transition:background 0.2s,color 0.2s;"
                    onmouseover="this.style.background='#1a6b9a';this.style.color='#fff'"
@@ -182,17 +182,15 @@
                     Open Full Dashboard ↗
                 </a>
             </div>
-            <p style="font-size:0.88em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
+            <p style="font-size:2em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
                 Random Forest model (CV F1 = 0.980 ± 0.002) predicting PFAS contamination risk across
-                1,541 Ohio HUC-12 watersheds. Toggle layers to explore High Risk, Moderate Risk,
-                military sites, and 14 priority unmonitored watersheds.
+                1,541 Ohio HUC-12 watersheds. Toggle layers to explore the different layers that were used in this prediction.
             </p>
             <iframe src="https://kkanjin.github.io/Ohio-PFAS-Prediction-mobile/"
                     width="100%" height="600px" frameborder="0"
                     title="Ohio PFAS Contamination Risk Prediction Map" loading="lazy"
                     style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
-            <p style="font-size:0.78em;color:#4a7fa5;margin-top:10px;text-align:center;">
-                💡 Use the layer controls to toggle risk tiers, military sites, and PFAS facilities.
+            <p style="font-size:2em;color:#4a7fa5;margin-top:10px;text-align:center;">
                 Open the full dashboard for ML feature importance, confusion matrix, and risk charts.
             </p>
         </div>
@@ -201,11 +199,11 @@
         <div class="map-frame">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
                 <p class="map-caption" style="margin-bottom:0;">
-                    🌊 Ohio HUC-8 Water Quality Monitoring Coverage &amp; Gap Assessment
+                    Ohio HUC-8 Water Quality Monitoring Coverage &amp; Gap Assessment
                 </p>
                 <a href="https://kkanjin.github.io/ohio-wq-dashboard/"
                    target="_blank"
-                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.85em;
+                   style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:2em;
                           font-weight:600;color:#1a6b9a;text-decoration:none;
                           border:1.5px solid #1a6b9a;padding:6px 16px;border-radius:6px;
                           white-space:nowrap;transition:background 0.2s,color 0.2s;"
@@ -214,24 +212,28 @@
                     Open Full Dashboard ↗
                 </a>
             </div>
-            <p style="font-size:0.88em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
+            <p style="font-size:2em;color:#4a7fa5;margin-bottom:14px;line-height:1.65;">
                 Spatial analysis of water quality monitoring coverage across all 44 Ohio HUC-8 watersheds.
                 814 monitoring locations from 8 organizations — hover over watersheds to explore
-                station counts, density, and coverage. Identifies 5 unmonitored watersheds.
+                station counts, and coverage. Identifies 5 unmonitored watersheds.
             </p>
             <iframe src="https://kkanjin.github.io/WastershedOhio/"
                     width="100%" height="600px" frameborder="0"
                     title="Ohio Water Quality Monitoring Coverage Map" loading="lazy"
                     style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
-            <p style="font-size:0.78em;color:#4a7fa5;margin-top:10px;text-align:center;">
-                💡 Hover over watersheds for monitoring stats. Open the full dashboard for
+            <p style="font-size:2em;color:#4a7fa5;margin-top:10px;text-align:center;">
+                Hover over watersheds for monitoring stats. Open the full dashboard for
                 coverage charts, gap analysis, and monitoring organization breakdown.
             </p>
         </div>
 
-    </section>
+    
 
-    <!-- ── CONTACT ────────────────────────────────────────────── -->
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+</section>
+
     <section class="section" id="contact">
         <h2>Contact</h2>
         <div class="contact-card">
@@ -240,18 +242,6 @@
             <p>📍 Toledo, OH &nbsp;|&nbsp; 📞 419-932-1884</p>
         </div>
     </section>
-
-</main>
-
-<!-- ── FOOTER ─────────────────────────────────────────────────── -->
-<footer class="footer">
-    <div class="credit">Kingsley Kanjin &nbsp;|&nbsp; GIS Analyst · Water Quality Planner</div>
-    <p>
-        <a href="mailto:kanjinkingsley3@gmail.com">kanjinkingsley3@gmail.com</a>
-        &nbsp;·&nbsp;
-        <a href="https://www.linkedin.com/in/kingsley-kanjin-9bb368217/" target="_blank">LinkedIn</a>
-        &nbsp;·&nbsp; Toledo, OH
-    </p>
     <p style="margin-top:8px;font-size:0.8em;">
         © <span id="year"></span> Kingsley Kanjin &nbsp;·&nbsp;
         Built with HTML · CSS · JavaScript · Python · ArcGIS
