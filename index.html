@@ -151,21 +151,7 @@
         <h2>Interactive Maps &amp; Dashboard</h2>
         <p class="lead" style="margin-bottom:32px;">Webmaps and dashboards built with ArcGIS Online and Python.</p>
 
-        <!-- 1 — Vulnerability Analysis (original, unchanged) -->
-        <div class="map-frame" style="margin-bottom:48px;">
-            <p class="map-caption">Road Infrastructure Vulnerability Map</p>
-            <arcgis-embedded-map
-                item-id="0d157147aa88452a9bfb7386c2ae702d"
-                style="height:600px;width:100%;"
-                theme="dark" bookmarks-enabled heading-enabled
-                legend-enabled information-enabled share-enabled
-                center="-73.69036517907091,45.559527472680095"
-                scale="577790.5542885"
-                portal-url="https://kkanjin.github.io/KingsleyKanjin/lucas_county_vulnerability.html">
-            </arcgis-embedded-map>
-        </div>
-
-        <!-- 2 — PFAS Prediction Interactive Map (NEW) -->
+        <!-- 1 — PFAS Prediction Interactive Map (NEW) -->
         <div class="map-frame" style="margin-bottom:48px;">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
                 <p class="map-caption" style="margin-bottom:0;">
@@ -195,7 +181,7 @@
             </p>
         </div>
 
-        <!-- 3 — Ohio WQ Monitoring Interactive Map (NEW) -->
+        <!-- 2 — Ohio WQ Monitoring Interactive Map (NEW) -->
         <div class="map-frame">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
                 <p class="map-caption" style="margin-bottom:0;">
@@ -227,7 +213,62 @@
             </p>
         </div>
 
-    
+    <!-- 3 — Lucas County Infrastructure Vulnerability Assessment -->
+<div class="map-frame" style="margin-top:40px;">
+    <div class="map-header">
+        <p class="map-caption" style="margin-bottom:0;">
+            🌊 Lucas County Infrastructure Vulnerability Assessment — Flood Risk, Bridges & Roads
+        </p>
+        <a class="map-link-btn"
+           href="https://kkanjin.github.io/KingsleyKanjin/lucas_county_vulnerability.html"
+           target="_blank">Open Full Map ↗</a>
+    </div>
+    <p class="map-desc">
+        Multi-criteria infrastructure vulnerability assessment for Lucas County, Ohio — identifying
+        120 high-vulnerability bridges, 169.25 miles of roads in high-risk flood zones, and 214 bridges
+        exposed to FEMA-designated flood hazard areas. Vulnerability scored using the IPCC framework:
+        Vulnerability = (Sensitivity × Exposure) ÷ Adaptive Capacity, combining deck condition,
+        flood zone exposure, and bridge age across all 641 county bridges.
+    </p>
+    <!-- Vulnerability Formula Graphic -->
+    <div style="background:#f4f8fc;border-radius:10px;padding:20px;margin-bottom:16px;border:1px solid #dce8f0;">
+        <p style="font-size:0.9em;font-weight:600;color:#082F4A;margin-bottom:12px;font-family:'DM Serif Display',serif;">
+            Vulnerability Assessment Framework (IPCC, 2007)
+        </p>
+        <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;font-family:'DM Sans',sans-serif;">
+            <div style="background:#1A6B9A;color:white;padding:10px 18px;border-radius:8px;text-align:center;min-width:130px;">
+                <div style="font-weight:700;font-size:0.95em;">Vulnerability</div>
+                <div style="font-size:0.75em;opacity:0.85;">Bridge flood risk index</div>
+            </div>
+            <div style="font-size:1.4em;font-weight:700;color:#082F4A;">=</div>
+            <div style="background:#EF9F27;color:white;padding:10px 18px;border-radius:8px;text-align:center;min-width:130px;">
+                <div style="font-weight:700;font-size:0.95em;">Sensitivity</div>
+                <div style="font-size:0.75em;opacity:0.85;">Deck condition score</div>
+            </div>
+            <div style="font-size:1.4em;font-weight:700;color:#082F4A;">×</div>
+            <div style="background:#E24B4A;color:white;padding:10px 18px;border-radius:8px;text-align:center;min-width:130px;">
+                <div style="font-weight:700;font-size:0.95em;">Exposure</div>
+                <div style="font-size:0.75em;opacity:0.85;">Flood zone location</div>
+            </div>
+            <div style="font-size:1.4em;font-weight:700;color:#082F4A;">÷</div>
+            <div style="background:#1D9E75;color:white;padding:10px 18px;border-radius:8px;text-align:center;min-width:130px;">
+                <div style="font-weight:700;font-size:0.95em;">Adaptive Capacity</div>
+                <div style="font-size:0.75em;opacity:0.85;">Bridge age score</div>
+            </div>
+        </div>
+        <p style="font-size:0.75em;color:#4a7fa5;margin-top:12px;text-align:center;">
+            Source: IPCC (2007) · Füssel &amp; Klein (2006) · FHWA Bridge Vulnerability Framework
+        </p>
+    </div>
+    <iframe src="https://kkanjin.github.io/KingsleyKanjin/lucas_county_vulnerability.html"
+            width="100%" height="600px" frameborder="0"
+            title="Lucas County Infrastructure Vulnerability Assessment" loading="lazy"
+            style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
+    <p class="map-hint">
+        Click on bridge circles to explore vulnerability scores, deck condition, and flood exposure.
+        Toggle layers using the controls in the top right corner.
+    </p>
+</div>
 
 </section>
  
