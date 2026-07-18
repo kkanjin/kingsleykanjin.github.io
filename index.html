@@ -68,8 +68,9 @@
                         <span class="h-icon">🗺</span>
                         <div>
                             <strong>Spatial Analysis</strong>
-                            <p>Hydrologic modelling, watershed delineation, SWAT Modeling, and spatial data analysis
-                            to guide infrastructure investment and protect public health.</p>
+                            <p>Spatial Accessibility, Hydrologic modelling, watershed delineation, SWAT Modeling, 
+                                infrastructure vulnerability modelling, Water Quality & Non-Point Source Pollution analysis, 
+                                flood modeling.</p>
                         </div>
                     </div>
                     <div class="highlight">
@@ -106,14 +107,14 @@
         <h2>Skills &amp; Tools</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-icon">🗺</div>
+                <div class="skill-icon"></div>
                 <h4>GIS & Hydrological modeling</h4>
-                <p>ArcGIS Pro, ArcGIS API for Python, QGIS, WebGIS (ArcGIS Online), SWAT Modeling, HEC RAS</p>
+                <p>ArcGIS Pro, ArcGIS API for Python, QGIS, WebGIS (ArcGIS Online, Folium in python), SWAT Modeling, HEC RAS</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon"></div>
                 <h4>Programming and AI</h4>
-                <p>Python, R, Google Earth Engine, Machine Learning, AI Prompt Writing</p>
+                <p>Python, R, Google Earth Engine, Machine Learning, KNIME, AI Prompt Writing</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon"></div>
@@ -130,30 +131,25 @@
                 <h4>Engagement</h4>
                 <p>Stakeholder Engagement, Public Speaking and Presentation, Policy Communication</p>
             </div>
-            <div class="skill-card">
-                <div class="skill-icon"></div>
-                <h4>Modelling</h4>
-                <p>Spatial Accessibility, Remote Sensing, Hydrologic Modeling (Water Quality & Non-Point Source Pollution using SWAT Model, flood modeling, watershed) &amp; Climate Resilience</p>
-            </div>
-        </div>
+           </div>
     </section>
 
     <!-- ── PROJECTS ───────────────────────────────────────────── -->
     <section class="section" id="projects">
         <h2>Projects</h2>
         <p class="lead">Each project presents a brief narrative supported by static maps
-           and interactive visualisations.</p>
+           or web interactive map.</p>
         <div id="story-panels"></div>
     </section>
 
     <!-- ── MAPS ───────────────────────────────────────────────── -->
     <section class="section" id="maps">
         <h2>Interactive Maps &amp; Dashboard</h2>
-        <p class="lead" style="margin-bottom:32px;">Webmaps and dashboards built with ArcGIS Online and Python.</p>
+        <p class="lead" style="margin-bottom:50px;">Webmaps and dashboards built with ArcGIS Online and Python.</p>
 
         <!-- 1 — PFAS Prediction Interactive Map (NEW) -->
-        <div class="map-frame" style="margin-bottom:48px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
+        <div class="map-frame" style="margin-bottom:60px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
                 <p class="map-caption" style="margin-bottom:0;">
                     Ohio Watershed PFAS Contamination Risk — ML Prediction Map
                 </p>
@@ -200,11 +196,11 @@
             </div>
             <p style="font-size:1em;color:#4a7fa5;margin-bottom:18px;line-height:2;">
                 Spatial analysis of water quality monitoring coverage across all 44 Ohio HUC-8 watersheds.
-                814 monitoring locations from 8 organizations — hover over watersheds to explore
-                station counts, and coverage. Identifies 5 unmonitored watersheds.
+                814 monitoring locations from 8 organizations. Please hover over watersheds to explore
+                station counts, and coverage.
             </p>
             <iframe src="https://kkanjin.github.io/WastershedOhio/"
-                    width="100%" height="600px" frameborder="0"
+                    width="200%" height="800px" frameborder="0"
                     title="Ohio Water Quality Monitoring Coverage Map" loading="lazy"
                     style="border-radius:12px;border:1px solid #dce8f0;display:block;"></iframe>
             <p style="font-size:1em;color:#4a7fa5;margin-top:12px;text-align:center;">
@@ -214,7 +210,7 @@
         </div>
 
     <!-- 3 — Lucas County Infrastructure Vulnerability Assessment -->
-<div class="map-frame" style="margin-top:40px;">
+<div class="map-frame" style="margin-top:60px;">
     <div class="map-header">
         <p class="map-caption" style="margin-bottom:0;">
             Lucas County Infrastructure Vulnerability Assessment — Flood Risk, Bridges & Roads
@@ -224,11 +220,9 @@
            target="_blank">Open Full Map ↗</a>
     </div>
     <p class="map-desc">
-        Multi-criteria infrastructure vulnerability assessment for Lucas County, Ohio — identifying
-        120 high-vulnerability bridges, 169.25 miles of roads in high-risk flood zones, and 214 bridges
-        exposed to FEMA-designated flood hazard areas. Vulnerability scored using the IPCC framework:
-        Vulnerability = (Sensitivity × Exposure) ÷ Adaptive Capacity, combining deck condition,
-        flood zone exposure, and bridge age across all 641 county bridges.
+      Data: FEMA National Flood Hazard Layer, National Bridge Inventory (NBI), TIGER/Line road network for Lucas County, Ohio.
+      Method: Spatial multi-criteria vulnerability assessment using the IPCC framework (formula) below.
+   
     </p>
     <!-- Vulnerability Formula Graphic -->
     <div style="background:#f4f8fc;border-radius:10px;padding:20px;margin-bottom:16px;border:1px solid #dce8f0;">
@@ -261,7 +255,7 @@
         </p>
     </div>
     <iframe src="https://kkanjin.github.io/KingsleyKanjin/lucas_county_vulnerability.html"
-            width="100%" height="600px" frameborder="0"
+            width="200%" height="800px" frameborder="0"
             title="Lucas County Infrastructure Vulnerability Assessment" loading="lazy"
             style="border-radius:10px;border:1px solid #dce8f0;display:block;"></iframe>
     <p class="map-hint">
