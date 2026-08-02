@@ -159,7 +159,7 @@
   --mapgal-paper:    #ffffff;
   --mapgal-tint:     #f4f7f9;
 
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 72px 24px;
 }
@@ -208,11 +208,12 @@
 
 .mapgal-frame {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
   background: var(--mapgal-tint);
 }
-@media (max-width: 640px) {
-  .mapgal-frame { aspect-ratio: 4 / 3; }
+ .mapgal-frame {
+  aspect-ratio: auto;
+  height: 700px;
 }
 
 .mapgal-slide {
@@ -364,7 +365,7 @@
 <section class="mapgal" id="maps" aria-labelledby="mapgal-heading">
 
   <div class="mapgal-head">
-    <h2 id="mapgal-heading">Cartography</h2>
+    <h2 id="mapgal-heading">Sample of Other Spatial Analysis</h2>
     <span class="mapgal-count"><span id="mapgal-idx">1</span> / <span id="mapgal-total">23</span></span>
   </div>
   <p class="mapgal-intro">
