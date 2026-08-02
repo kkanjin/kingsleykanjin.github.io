@@ -373,11 +373,6 @@
 
   <div class="mapgal-stage" id="mapgal-stage">
     <div class="mapgal-frame" aria-live="polite">
-
-      </figure>
-      <figure class="mapgal-slide">
-        <img src="assets/images/RWH2.png" loading="lazy"
-             alt="Rainwater Harvesting — Site Detail">
       </figure>
       <figure class="mapgal-slide">
         <img src="assets/images/LIDER_DEM.jpg" loading="lazy"
@@ -493,42 +488,7 @@
         Each entry needs a matching <figure class="mapgal-slide"> above,
         in the same order. ── */
   var MAPS = [
-    {
-      title: 'Spatial Accessibility to Potable Water, Sibi',
-      desc:  'Two-Step Floating Catchment Area analysis of household access to boreholes and standpipes in Sibi, Ghana. Findings published in Applied Geography.',
-      data:  'Household survey · OSM',
-      tools: 'ArcGIS Pro · Network Analyst',
-      year:  '2024'
-    },
-    {
-      title: 'Pediatric Dental Access, Washington DC',
-      desc:  '2SFCA accessibility to pediatric dentists by census tract, using a five-mile catchment threshold and provider-to-population ratios.',
-      data:  '2020 Census · Provider registry',
-      tools: 'ArcGIS Pro',
-      year:  '2024'
-    },
-    {
-      title: 'Flood Risk Assessment',
-      desc:  'Flood hazard exposure mapping combining regulatory floodplain boundaries with terrain and land cover.',
-      data:  'FEMA NFHL · DEM',
-      tools: 'ArcGIS Pro',
-      year:  '2025'
-    },
-    {
-      title: 'Rainwater Harvesting Suitability',
-      desc:  'Multi-criteria suitability analysis identifying optimal rainwater harvesting sites, weighting slope, soil, land cover, and precipitation.',
-      data:  'SSURGO · NLCD · PRISM',
-      tools: 'ArcGIS Pro',
-      year:  '2024'
-    },
-    {
-      title: 'Rainwater Harvesting — Site Detail',
-      desc:  'Detailed view of the highest-scoring catchment areas from the suitability model.',
-      data:  'SSURGO · NLCD',
-      tools: 'ArcGIS Pro',
-      year:  '2024'
-    },
-    {
+     {
       title: 'Digital Elevation Model from LiDAR',
       desc:  'Bare-earth elevation surface derived from raw LiDAR point cloud returns.',
       data:  'LiDAR point cloud',
@@ -598,6 +558,12 @@
       tools: 'Google Earth Engine',
       year:  '2024'
     },
+    {
+      title: '3D Model of City',
+      data:  'LiDar',
+      tools: 'ArcScene',
+    },
+
     {
       title: 'SWAT+ Watershed Model — Results 1',
       desc:  'Output from the SWAT+ hydrologic model, reviewed as part of model setup and results checking.',
