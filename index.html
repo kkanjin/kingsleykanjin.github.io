@@ -147,6 +147,558 @@
         <h2>Interactive Maps &amp; Dashboard</h2>
         <p class="lead" style="margin-bottom:50px;">Webmaps and dashboards built with ArcGIS Online and Python.</p>
 
+
+
+
+        
+<!-- ═══════════════════════════════════════════════════════════════════
+     MAP GALLERY — paste this block into index.html where you want it.
+     All classes are namespaced `mapgal-` so nothing collides with
+     existing .panel / .panel-body / .text / .map styles or scripts.
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<style>
+.mapgal {
+  --mapgal-ink:      #14202b;
+  --mapgal-muted:    #6b7a89;
+  --mapgal-rule:     #d8dfe6;
+  --mapgal-accent:   #00707f;
+  --mapgal-paper:    #ffffff;
+  --mapgal-tint:     #f4f7f9;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+/* ── Section heading ── */
+.mapgal-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+.mapgal-head h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--mapgal-ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.mapgal-count {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mapgal-muted);
+  white-space: nowrap;
+}
+.mapgal-intro {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mapgal-muted);
+  max-width: 60ch;
+  margin: 0 0 32px;
+}
+
+/* ── Stage ── */
+.mapgal-stage {
+  position: relative;
+  background: var(--mapgal-paper);
+  border: 1px solid var(--mapgal-rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mapgal-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--mapgal-tint);
+}
+@media (max-width: 640px) {
+  .mapgal-frame { aspect-ratio: 4 / 3; }
+}
+
+.mapgal-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 700ms ease;
+}
+.mapgal-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+.mapgal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Cartographic credit block ──
+   Mirrors the metadata block in the corner of a printed map. */
+.mapgal-credit {
+  border-top: 1px solid var(--mapgal-rule);
+  padding: 18px 22px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+  background: var(--mapgal-paper);
+}
+.mapgal-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--mapgal-ink);
+  margin: 0 0 5px;
+  line-height: 1.3;
+}
+.mapgal-desc {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--mapgal-muted);
+  margin: 0;
+  max-width: 58ch;
+}
+.mapgal-meta {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--mapgal-muted);
+  text-align: right;
+  line-height: 1.9;
+  white-space: nowrap;
+}
+.mapgal-meta dt {
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  opacity: 0.65;
+}
+.mapgal-meta dd {
+  display: inline;
+  margin: 0 0 0 7px;
+  color: var(--mapgal-ink);
+  font-variant-numeric: tabular-nums;
+}
+.mapgal-meta div + div { margin-top: 1px; }
+
+@media (max-width: 720px) {
+  .mapgal-credit { grid-template-columns: 1fr; gap: 14px; }
+  .mapgal-meta { text-align: left; }
+}
+
+/* ── Controls ── */
+.mapgal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--mapgal-rule);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.94);
+  color: var(--mapgal-ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background 160ms, border-color 160ms, opacity 200ms;
+  opacity: 0;
+}
+.mapgal-stage:hover .mapgal-nav,
+.mapgal-nav:focus-visible { opacity: 1; }
+.mapgal-nav:hover { background: #fff; border-color: var(--mapgal-accent); }
+.mapgal-nav:focus-visible { outline: 2px solid var(--mapgal-accent); outline-offset: 2px; }
+.mapgal-prev { left: 14px; }
+.mapgal-next { right: 14px; }
+.mapgal-nav svg { width: 15px; height: 15px; }
+
+@media (hover: none) {
+  .mapgal-nav { opacity: 1; }
+}
+
+/* ── Progress dots ── */
+.mapgal-dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.mapgal-dot {
+  width: 34px;
+  height: 3px;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+.mapgal-dot::after {
+  content: '';
+  position: absolute;
+  inset: 8px 0;
+  background: var(--mapgal-rule);
+  transition: background 200ms;
+}
+.mapgal-dot:hover::after { background: var(--mapgal-muted); }
+.mapgal-dot.is-active::after { background: var(--mapgal-accent); }
+.mapgal-dot:focus-visible { outline: 2px solid var(--mapgal-accent); outline-offset: 1px; }
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .mapgal-slide { transition: none; }
+}
+.mapgal-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+
+
+<section class="mapgal" id="maps" aria-labelledby="mapgal-heading">
+
+  <div class="mapgal-head">
+    <h2 id="mapgal-heading">Cartography</h2>
+    <span class="mapgal-count"><span id="mapgal-idx">1</span> / <span id="mapgal-total">15</span></span>
+  </div>
+  <p class="mapgal-intro">
+    Selected maps from analysis and planning work. Advances automatically — hover to pause, or use the arrows.
+  </p>
+
+  <div class="mapgal-stage" id="mapgal-stage">
+    <div class="mapgal-frame" aria-live="polite">
+
+      <figure class="mapgal-slide is-active">
+        <img src="assets/2sfca_sibi.jpg"
+             alt="Spatial Accessibility to Potable Water, Sibi">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/AccessibilitytoDentist.jpg" loading="lazy"
+             alt="Pediatric Dental Access, Washington DC">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/Flood_Risk.jpg" loading="lazy"
+             alt="Flood Risk Assessment">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/RainWaterHarvesting.png" loading="lazy"
+             alt="Rainwater Harvesting Suitability">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/RWH2.png" loading="lazy"
+             alt="Rainwater Harvesting — Site Detail">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/LIDER_DEM.jpg" loading="lazy"
+             alt="Digital Elevation Model from LiDAR">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/DSM_Lidar.jpg" loading="lazy"
+             alt="Digital Surface Model from LiDAR">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/CanopyHeight_Lidar.jpg" loading="lazy"
+             alt="Canopy Height Model">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/NDVI.jpg" loading="lazy"
+             alt="Normalised Difference Vegetation Index">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/DroughtNDVI.jpg" loading="lazy"
+             alt="Drought Impact on Vegetation">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/NDMI.jpg" loading="lazy"
+             alt="Normalised Difference Moisture Index">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/NDMI_Moist.jpg" loading="lazy"
+             alt="Moisture Index — Classified">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/LST%26NDVI.png" loading="lazy"
+             alt="Land Surface Temperature and Vegetation">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/Aerosol%20Optical%20Depth.jpg" loading="lazy"
+             alt="Aerosol Optical Depth">
+      </figure>
+      <figure class="mapgal-slide">
+        <img src="assets/Change.png" loading="lazy"
+             alt="Land Cover Change Detection">
+      </figure>
+
+      <button class="mapgal-nav mapgal-prev" id="mapgal-prev" aria-label="Previous map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="mapgal-nav mapgal-next" id="mapgal-next" aria-label="Next map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- Credit block — updated by script -->
+    <div class="mapgal-credit">
+      <div>
+        <h3 class="mapgal-title" id="mapgal-title">Spatial Accessibility to Potable Water, Sibi</h3>
+        <p class="mapgal-desc" id="mapgal-desc">
+          Two-Step Floating Catchment Area analysis of household access to boreholes and standpipes in Sibi, Ghana. Findings published in Applied Geography.
+        </p>
+      </div>
+      <dl class="mapgal-meta">
+        <div><dt>Data</dt><dd id="mapgal-data">Household survey · OSM</dd></div>
+        <div><dt>Tools</dt><dd id="mapgal-tools">ArcGIS Pro · Network Analyst</dd></div>
+        <div><dt>Year</dt><dd id="mapgal-year">2024</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="mapgal-dots" id="mapgal-dots" role="tablist" aria-label="Choose map"></div>
+  <p class="mapgal-sr" role="status" id="mapgal-status"></p>
+</section>
+
+
+<script>
+(function () {
+  /* ── Edit this array to add, remove, or reorder maps.
+        Each entry needs a matching <figure class="mapgal-slide"> above,
+        in the same order. ── */
+  var MAPS = [
+    {
+      title: 'Spatial Accessibility to Potable Water, Sibi',
+      desc:  'Two-Step Floating Catchment Area analysis of household access to boreholes and standpipes in Sibi, Ghana. Findings published in Applied Geography.',
+      data:  'Household survey · OSM',
+      tools: 'ArcGIS Pro · Network Analyst',
+      year:  '2024'
+    },
+    {
+      title: 'Pediatric Dental Access, Washington DC',
+      desc:  '2SFCA accessibility to pediatric dentists by census tract, using a five-mile catchment threshold and provider-to-population ratios.',
+      data:  '2020 Census · Provider registry',
+      tools: 'ArcGIS Pro',
+      year:  '2024'
+    },
+    {
+      title: 'Flood Risk Assessment',
+      desc:  'Flood hazard exposure mapping combining regulatory floodplain boundaries with terrain and land cover.',
+      data:  'FEMA NFHL · DEM',
+      tools: 'ArcGIS Pro',
+      year:  '2025'
+    },
+    {
+      title: 'Rainwater Harvesting Suitability',
+      desc:  'Multi-criteria suitability analysis identifying optimal rainwater harvesting sites, weighting slope, soil, land cover, and precipitation.',
+      data:  'SSURGO · NLCD · PRISM',
+      tools: 'ArcGIS Pro',
+      year:  '2024'
+    },
+    {
+      title: 'Rainwater Harvesting — Site Detail',
+      desc:  'Detailed view of the highest-scoring catchment areas from the suitability model.',
+      data:  'SSURGO · NLCD',
+      tools: 'ArcGIS Pro',
+      year:  '2024'
+    },
+    {
+      title: 'Digital Elevation Model from LiDAR',
+      desc:  'Bare-earth elevation surface derived from raw LiDAR point cloud returns.',
+      data:  'LiDAR point cloud',
+      tools: 'ArcGIS Pro · LAS Tools',
+      year:  '2023'
+    },
+    {
+      title: 'Digital Surface Model from LiDAR',
+      desc:  'First-return surface model capturing vegetation and built structures above ground level.',
+      data:  'LiDAR point cloud',
+      tools: 'ArcGIS Pro · LAS Tools',
+      year:  '2023'
+    },
+    {
+      title: 'Canopy Height Model',
+      desc:  'Vegetation height derived by differencing the digital surface model against the bare-earth terrain.',
+      data:  'LiDAR point cloud',
+      tools: 'ArcGIS Pro',
+      year:  '2023'
+    },
+    {
+      title: 'Normalised Difference Vegetation Index',
+      desc:  'Vegetation vigour classified from multispectral satellite imagery using red and near-infrared bands.',
+      data:  'Landsat / Sentinel-2',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Drought Impact on Vegetation',
+      desc:  'Temporal NDVI comparison isolating vegetation stress during a drought period.',
+      data:  'Landsat time series',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Normalised Difference Moisture Index',
+      desc:  'Vegetation and soil moisture content mapped from near-infrared and shortwave-infrared bands.',
+      data:  'Sentinel-2',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Moisture Index — Classified',
+      desc:  'NDMI output reclassified into moisture condition categories for interpretation.',
+      data:  'Sentinel-2',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Land Surface Temperature and Vegetation',
+      desc:  'Paired analysis of thermal land surface temperature against vegetation index, showing the cooling effect of vegetated cover.',
+      data:  'Landsat 8 thermal',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Aerosol Optical Depth',
+      desc:  'Atmospheric aerosol concentration mapped from satellite retrieval, an indicator of particulate air quality.',
+      data:  'MODIS / Sentinel-5P',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    },
+    {
+      title: 'Land Cover Change Detection',
+      desc:  'Multi-temporal classification identifying land cover transitions between two observation periods.',
+      data:  'Landsat time series',
+      tools: 'Google Earth Engine',
+      year:  '2024'
+    }
+  ];
+
+  var INTERVAL = 6000;   // milliseconds between slides
+
+  var stage   = document.getElementById('mapgal-stage');
+  if (!stage) return;
+
+  var slides  = stage.querySelectorAll('.mapgal-slide');
+  var dotsBox = document.getElementById('mapgal-dots');
+  var idxEl   = document.getElementById('mapgal-idx');
+  var status  = document.getElementById('mapgal-status');
+  var fields  = {
+    title: document.getElementById('mapgal-title'),
+    desc:  document.getElementById('mapgal-desc'),
+    data:  document.getElementById('mapgal-data'),
+    tools: document.getElementById('mapgal-tools'),
+    year:  document.getElementById('mapgal-year')
+  };
+
+  var current = 0, timer = null;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('mapgal-total').textContent = slides.length;
+
+  /* Build indicator dots */
+  var dots = [];
+  for (var i = 0; i < slides.length; i++) {
+    (function (n) {
+      var b = document.createElement('button');
+      b.className = 'mapgal-dot' + (n === 0 ? ' is-active' : '');
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Map ' + (n + 1) + ' of ' + slides.length);
+      b.addEventListener('click', function () { go(n); restart(); });
+      dotsBox.appendChild(b);
+      dots.push(b);
+    })(i);
+  }
+
+  function go(n) {
+    current = (n + slides.length) % slides.length;
+
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].classList.toggle('is-active', i === current);
+      dots[i].classList.toggle('is-active', i === current);
+      dots[i].setAttribute('aria-selected', i === current ? 'true' : 'false');
+    }
+
+    var m = MAPS[current];
+    if (m) {
+      fields.title.textContent = m.title;
+      fields.desc.textContent  = m.desc;
+      fields.data.textContent  = m.data;
+      fields.tools.textContent = m.tools;
+      fields.year.textContent  = m.year;
+      status.textContent = m.title;
+    }
+    idxEl.textContent = current + 1;
+  }
+
+  function next()  { go(current + 1); }
+  function prev()  { go(current - 1); }
+  function start() { if (!reduced && !timer) timer = setInterval(next, INTERVAL); }
+  function stop()  { clearInterval(timer); timer = null; }
+  function restart() { stop(); start(); }
+
+  document.getElementById('mapgal-next').addEventListener('click', function () { next(); restart(); });
+  document.getElementById('mapgal-prev').addEventListener('click', function () { prev(); restart(); });
+
+  /* Pause while the visitor is looking */
+  stage.addEventListener('mouseenter', stop);
+  stage.addEventListener('mouseleave', start);
+  stage.addEventListener('focusin',  stop);
+  stage.addEventListener('focusout', start);
+
+  /* Don't run in a background tab */
+  document.addEventListener('visibilitychange', function () {
+    document.hidden ? stop() : start();
+  });
+
+  /* Arrow keys when the gallery is in view */
+  document.addEventListener('keydown', function (e) {
+    if (!stage.contains(document.activeElement)) return;
+    if (e.key === 'ArrowRight') { next(); restart(); }
+    if (e.key === 'ArrowLeft')  { prev(); restart(); }
+  });
+
+  /* Swipe on touch devices */
+  var x0 = null;
+  stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, {passive: true});
+  stage.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 45) { dx < 0 ? next() : prev(); }
+    x0 = null;
+    start();
+  }, {passive: true});
+
+  /* Only run the timer once the section is actually on screen */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries[0].isIntersecting ? start() : stop();
+    }, { threshold: 0.25 }).observe(stage);
+  } else {
+    start();
+  }
+
+  go(0);
+})();
+</script>
+
+
+
+
+
+
         <!-- 1 — PFAS Prediction Interactive Map (NEW) -->
         <div class="map-frame" style="margin-bottom:60px;">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
